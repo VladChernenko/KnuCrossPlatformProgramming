@@ -1,0 +1,13 @@
+# User-specific files
+*.suo
+*.user
+
+# Build
+bin/
+obj/
+
+.vs2019/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
