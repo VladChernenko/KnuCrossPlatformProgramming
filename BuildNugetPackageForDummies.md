@@ -9,7 +9,7 @@
 # Створення 
 
 
-![[Pasted image 20230927014234.png]]
+![["./assets/Pasted image 20230927014234.png"]]
 
 
 # Установка Nuget
