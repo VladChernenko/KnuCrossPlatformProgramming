@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Vlad Chernenko</Authors>
+    <PackageId>VChernenko</PackageId>
+    <Company>VladChernenko</Company>
+    <Description>Just Lab3v3</Description>
+    <Copyright />
+    <RepositoryUrl>https://github.com/VladChernenko/KnuCrossPlatformProgramming/blob/main/Lab3</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <Version>3.0.0</Version>
+  </PropertyGroup>
+
+</Project>
