@@ -6,6 +6,8 @@
 bin/
 obj/
 
+.vs/
+
 .vs2019/
 *.suo
 *.user
