@@ -9,7 +9,7 @@
 # Створення 
 
 
-![["./assets/Pasted image 20230927014234.png"]]
+<img src="./assets/Pasted image 20230927014234.png">
 
 
 # Установка Nuget
@@ -34,17 +34,17 @@ public static void FindSquareOfMaze(string pathToInputFile, string pathToOutputF
 
 Після виконання задачі, перейдіть до `Project > <YOUR PROJECT NAME> properties`
 
-![[Pasted image 20230927014536.png]]
+<img src="./assets/Pasted image 20230927014536.png">
 
 
 Заповніть поля
 
-![[Pasted image 20230927014814.png]]
+<img src="./assets/Pasted image 20230927014814.png">
 
 
 Перед білдом переконайтесь, що отриманий пакет буде релізним. Для цього, оберіть опцію `Release`
 
-![[Pasted image 20230927015013.png]]
+<img src="./assets/Pasted image 20230927015013.png">
 
 
 # Створення локального репозиторію для Nuget пакетів
@@ -74,11 +74,12 @@ nuget add <YOUR PACKAGE NAME>.<SEMVER>.nupkg -source C:\Users\Acer\MyProjects\Lo
 
 В тому ж Solution створіть новий проект(або в іншому - за бажанням)
 
-![[Pasted image 20230927015415.png]]
+
+<img src="./assets/Pasted image 20230927015415.png">
 
 Приміром, у мене ієрархія має такий вигляд:
 
-![[Pasted image 20230927015500.png]]
+<img src="./assets/Pasted image 20230927015500.png">
 
 
 # Підключення пакету до проекту
@@ -86,21 +87,20 @@ nuget add <YOUR PACKAGE NAME>.<SEMVER>.nupkg -source C:\Users\Acer\MyProjects\Lo
 
 Оберіть `Project > Manage Nuget Packages`
 
-![[Pasted image 20230927015622.png]]
 
+<img src="./assets/Pasted image 20230927015622.png">
 
 Додайте локальний репозиторій в якості додаткового джерела пакетів
 
-![[Pasted image 20230927015720.png]]
 
+<img src="./assets/Pasted image 20230927015720.png">
 
-![[Pasted image 20230927015732.png]]
-
+<img src="./assets/Pasted image 20230927015732.png">
 
 Тепер можна імпортувати пакет
 
-![[Pasted image 20230927015803.png]]
 
+<img src="./assets/Pasted image 20230927015803.png">
 
 Код використання
 
@@ -128,7 +128,7 @@ namespace Lab3Usage
 Результат
 
 
-![[Pasted image 20230927015903.png]]
+<img src="./assets/Pasted image 20230927015903.png">
 
 
 >Приклади вхідних файлів доступні в цьому ж репозиторії
