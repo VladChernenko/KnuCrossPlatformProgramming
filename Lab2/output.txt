@@ -1,1 +1,1 @@
-Total number of almost palindromes => 12
+Total number of almost palindromes => 6
