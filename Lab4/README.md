@@ -17,9 +17,12 @@
 
 <img src="./assets/2ProjectsInOneSolution.jpg">
 
+![Alt text](./assets/FullStruct.png)
+
+Тепер `Lab4ClassLibs` заповнюються проектами лабораторних `1-3`, а проект `Lab4` міститиме основний CLI.
+
 
 <br/><br/><br/>
-
 # Код написаний, що далі?
 
 Локально все працює, але тепер треба продумати як це задеплоїти до регістру, а потім отримати з віртуальних машин.
@@ -92,9 +95,55 @@ docker run --rm --name nuget-server-by-vlad-chernenko -p 5555:80 --env-file bage
 
 # Створення Vagrant файлів
 
-Оберемо найпрості конфігурації для отримання мінімального шеллу до машини через `ssh`:
+Оберемо найпрості конфігурації для отримання мінімального шеллу до машини через `ssh`. Для Windows можна також додати GUI для зручності.
 
 
 Для роботи було використано `VirtualBox`:
 
 ![Alt text](./assets/VirtualBox.png)
+
+Для Linux середовища був обраний `Debian` дистрибутив, для `Windows` - 10-та версія.
+
+
+<br/><br/><br/>
+
+# Деплой CLI в локальний регістр
+
+Для цього необхідно перейти в директорію з проектом CLI і запустити:
+
+```shell
+dotnet pack --configuration Release
+```
+
+Результат:
+
+![Alt text](./assets/PackProcess.png)
+
+
+Пуш в локальний регістр
+
+```shell
+dotnet nuget push -s http://192.168.3.11:5555/v3/index.json -k password123 Lab4TestApp.1.0.0.nupkg
+```
+
+![Alt text](./assets/PushProcess.png)
+
+А ось як це виглядає в локальному регістрі
+
+![Alt text](./assets/LocalRegistryAfterPush.png)
+
+
+Тепер із власного середовища віртуальні машини можуть вантажити цей `dotnet tool` і використовувати як CLI. Це можна зробити командою:
+
+
+```shell
+dotnet tool install --global --version 1.0.0 --add-source http://192.168.3.11:5555/v3/index.json --no-cache Lab4TestApp
+```
+
+#### Результат на Debian
+
+![Alt text](./assets/DebianResult.png)
+
+#### Результат на Windows
+
+![Alt text](./assets/WindowsResult.png)
