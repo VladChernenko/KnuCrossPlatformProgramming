@@ -22,28 +22,10 @@ Vagrant.configure("2") do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  # config.vm.network "forwarded_port", guest: 80, host: 8080
+  
+  # В даному випадку - прокидуємо порт 3000
+  config.vm.network "forwarded_port", guest: 3000, host: 3000
  
-  # Create a private network, which allows host-only access to the machine
-  # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.33.10"
- 
-  # Create a public network, which generally matched to bridged network.
-  # Bridged networks make the machine appear as another physical device on
-  # your network.
-  # Створення машини з доступом до основної мережі хост-системи. Це треба для доступу до локального серверу з Nuget пакетами
-  config.vm.network "public_network"
- 
-  # Share an additional folder to the guest VM. The first argument is
-  # the path on the host to the actual folder. The second argument is
-  # the path on the guest to mount the folder. And the optional third
-  # argument is a set of non-required options.
-  # config.vm.synced_folder "D:/vagrant/DebianByVladChernenko", "/var/www/", type: 'nfs'
- 
-  # Provider-specific configuration so you can fine-tune various
-  # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
   # config.vm.provider "virtualbox" do |vb|
   # # Display the VirtualBox GUI when booting the machine
   # vb.gui = true
@@ -61,8 +43,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
 
     # База
-    apt-get update
-    apt-get upgrade
+    sudo apt-get update
+    sudo apt-get upgrade
   
     # Встановлення
 
@@ -72,10 +54,23 @@ Vagrant.configure("2") do |config|
 
     sudo apt-get update && sudo apt-get install -y dotnet-sdk-7.0
 
-    # Встановлення CLI
+    # Встановлення Git для подальшого клонування репозиторію
 
-    dotnet tool install --global --version 3.0.0 --add-source http://192.168.3.11:5555/v3/index.json --no-cache Lab4
+    sudo apt-get install git
 
+    # Клонування репозиторію
+
+    git clone https://github.com/VladChernenko/KnuCrossPlatformProgramming.git
+
+    # Переходимо до лаби 5
+
+    cd KnuCrossPlatformProgramming/Lab5/Lab5WebApp
+
+    # Запускаємо
+
+    dotnet run
+
+    
     SHELL
  
 end
