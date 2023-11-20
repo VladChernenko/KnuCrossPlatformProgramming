@@ -1,11 +1,20 @@
+using Auth0.AspNetCore.Authentication;
+using Lab5WebApp.Support;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+//To use MVC we have to explicitly declare we are using it. Doing so will prevent a System.InvalidOperationException.
 builder.Services.AddControllersWithViews();
-
-var app = builder.Build();
+builder.Services.AddAuth0WebAppAuthentication(options =>
+{
+    options.Domain = builder.Configuration["Auth0:Domain"];
+    options.ClientId = builder.Configuration["Auth0:ClientId"];
+});
 
 // Configure the HTTP request pipeline.
+builder.Services.ConfigureSameSiteNoneCookies();
+var app = builder.Build();
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -13,15 +22,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseCookiePolicy();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapDefaultControllerRoute();
+});
 
 app.Run();

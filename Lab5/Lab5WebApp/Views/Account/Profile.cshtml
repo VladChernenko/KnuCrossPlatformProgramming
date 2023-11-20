@@ -1,0 +1,32 @@
+﻿@model Lab5WebApp.Models.UserProfileViewModel
+@{
+    ViewData["Title"] = "Your personal info page";
+}
+
+<div class="row">
+
+    <h2 style="margin-top:100px">@ViewData["Title"]</h2>
+    <div class="col-md-12">
+        <div class="row">
+
+            <div class="col-md-2">
+
+                <img src="@Model.ProfileImage"
+                     alt="" class="img-rounded img-responsive" />
+            </div>
+            <div class="col-md-4">
+                <table border="2px" align="center" style="margin-top:40px;margin-left:40px">
+                @foreach (var claim in User.Claims)
+                    {
+                        if (claim.Type.Length > 10) continue;
+
+                    <tr style="text-align:center">
+                        <td><b>@claim.Type</b></td>
+                        <td>@claim.Value</td>
+                    </tr>
+                }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
