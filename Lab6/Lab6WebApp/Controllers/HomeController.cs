@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace Lab6WebApp.Controllers
@@ -12,21 +13,14 @@ namespace Lab6WebApp.Controllers
             return View();
         }
 
-        public async Task BlaBlaBla()
+
+        [Authorize]
+        public IActionResult Swagger()
         {
-
-            string apiUrl = "http://localhost:5109/WeatherForecast";
-
-            HttpClient httpClient = new HttpClient();
-
-
-            HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
-
-            string jsonResult = await response.Content.ReadAsStringAsync();
-
-            await Response.WriteAsync(jsonResult);
-
+            return Redirect("http://localhost:5109/swagger/index.html");
         }
+
+
 
         public IActionResult Error()
         {
