@@ -1,3 +1,11 @@
+########### Налаштування контейнеру ##############
+
+docker run -dtp 5000:5000 -p 5109:5109 --name lab6_crossplatform ubuntu
+
+docker exec -ti lab6_crossplatform bash
+
+########### Робота всередині контейнера ##############
+
 apt-get update && apt-get upgrade -y && apt-get install git curl wget nano tzdata
 
 wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
